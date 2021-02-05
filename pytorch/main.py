@@ -267,8 +267,8 @@ def train(train_loader, model, ema_model, optimizer, epoch, log):
             meters.update('cons_loss', 0)
 
         loss = class_loss + consistency_loss + res_loss
-        assert not (np.isnan(loss.data[0]) or loss.data[0] > 1e5), 'Loss explosion: {}'.format(loss.item())
-        meters.update('loss', loss.data[0])
+        assert not (np.isnan(loss.item()) or loss.data[0] > 1e5), 'Loss explosion: {}'.format(loss.item())
+        meters.update('loss', loss.item())
 
         prec1, prec5 = accuracy(class_logit.data, target_var.data, topk=(1, 5))
         meters.update('top1', prec1[0], labeled_minibatch_size)
