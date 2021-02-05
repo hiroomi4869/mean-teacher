@@ -8,7 +8,7 @@
 """Utility functions and classes"""
 
 import sys
-
+import torch
 
 def parameters_string(module):
     lines = [
